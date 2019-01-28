@@ -1,28 +1,11 @@
-<form #f="ngForm" (ngSubmit)="getHeroes()" novalidate>
-	<input [(ngModel)]="user" name="user">
-	<br/>
-	<br/>
-	<button>Search</button>
-	<div *ngFor="let userD of users">
-		<div *ngIf="userD.login == this.user">
-			<table>
-				<tr>
-					<td>Avatar_url</td>
-					<td><img [src]="userD.avatar_url"/></td>
-				</tr>
-				<tr>
-					<td>Followers</td>
-					<td>{{userD.followers}}</td>
-				</tr>
-				<tr>
-					<td>Following</td>
-					<td>{{userD.following}}</td>
-				</tr>
-				<tr>
-					<td>Repos_url</td>
-					<td><button (click)="getReposUrl(userD.repos_url)">{{userD.repos_url}}</button></td>
-				</tr>
-			</table>
+<form #f="ngForm" novalidate>
+	<div class="col-lg-12 col-md-12">
+		<div *ngIf="userData" class="col-lg-3 col-md-3">
+			<app-user avatarUrl="{{userData.avatar_url}}" id={{userData.id}} siteAdmin={{userData.site_admin}}
+				reposUrl="{{userData.repos_url}}"></app-user>
+			</div>
+		<div *ngFor="let userD of users" class="col-lg-3 col-md-3">
+			<button (click)="userDetails(userD)">{{userD.login | uppercase}}</button>
 		</div>
 	</div>
 </form>

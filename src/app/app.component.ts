@@ -11,9 +11,10 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   user : string = '';
   users : any = [];
+  userData: any;
   private heroesUrl = 'https://api.github.com/users';
   constructor(private httpClient : HttpClient, private dataService : DataService) {
-  	
+  	this.getHeroes();
   }
   getHeroes(): void {
   	this.users = this.dataService.fetchData().subscribe(
@@ -23,7 +24,7 @@ export class AppComponent {
   	);
   }
 
-  getReposUrl(url : string) : void {
-  	window.location.href = url;
+  userDetails(userData : any){
+    this.userData = userData;
   }
 }
