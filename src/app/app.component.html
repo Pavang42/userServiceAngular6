@@ -1,11 +1,11 @@
 <form #f="ngForm" novalidate>
-	<div class="col-lg-12 col-md-12">
-		<div *ngIf="userData" class="col-lg-3 col-md-3">
+	<div class="row">
+		<div *ngIf="userData" class="col-lg-12 col-md-12">
 			<app-user avatarUrl="{{userData.avatar_url}}" id={{userData.id}} siteAdmin={{userData.site_admin}}
 				reposUrl="{{userData.repos_url}}"></app-user>
-			</div>
-		<div *ngFor="let userD of users" class="col-lg-3 col-md-3">
-			<button (click)="userDetails(userD)">{{userD.login | uppercase}}</button>
+		</div>
+		<div *ngFor="let userD of users" class="col-lg-3 col-md-3" style="margin-bottom: 5px;">
+			<button (click)="userDetails(userD)">{{userD.login | customName}}</button>
 		</div>
 	</div>
 </form>
